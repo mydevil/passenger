@@ -263,7 +263,7 @@ class RequestHandler:
 		env['passenger.hijack'] = hijack
 
 		result = self.app(env, start_response)
-		if 'passenger.hijacked_socket' in env:
+		if 'passenger.hijacked_socket' in env and not result:
 			# Socket connection hijacked. Don't do anything.
 			return True
 		try:
